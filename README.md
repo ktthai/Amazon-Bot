@@ -1,4 +1,4 @@
-# Amazon.in Bot
+# Amazon Bot
 
 ## How to use this Bot?
 ### Instructions
