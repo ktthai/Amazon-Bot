@@ -38,14 +38,52 @@ class Product:
 
         driver.find_element_by_xpath\
         ('''//*[@id="ap_email"]''').send_keys(self.amazon_credential.UNAME,Keys.RETURN)
-        time.sleep(10)
+        time.sleep(1)
         driver.find_element_by_xpath\
         ('''//*[@id="ap_password"]''').send_keys(self.amazon_credential.PASSWD,Keys.RETURN)
         time.sleep(10)
         
         """ Change this URL to add another product to cart. """
-        #self.browser_emulator.get(self.product)
-        #('''https://www.amazon.com/gp/product/B0883PYCB7/ref=ox_sc_saved_title_1?smid=A1COA7PWTAABOP&psc=1/''')
+        # driver.get("https://www.amazon.com/gp/product/B0883PYCB7/ref=ox_sc_saved_title_1?smid=A1COA7PWTAABOP&psc=1/")
+        driver.get("https://www.amazon.com/gp/product/B08L8JNTXQ?pf_rd_r=NBZW9ZN4KG585TZXS68E&pf_rd_p=edaba0ee-c2fe-4124-9f5d-b31d6b1bfbee")
+
+    def check_availability(self):
+        """ This function checks product availability
+        and adds it to cart when possible. """
+        
+        try:
+        	driver.find_element_by_xpath\
+            ('''//*[@id="priceblock_ourprice"]''')
+        
+        except:
+            try:
+            	driver.find_element_by_xpath\
+                ('''//*[@id="priceblock_dealprice"]''')
+            except:
+                try:
+                    driver.find_element_by_xpath\
+                    ('''//*[@id="priceblock_saleprice"]''')
+                except:
+                    pass
+                else:
+                    self.add_to_cart()
+            else:
+                self.add_to_cart()
+
+        else:
+            self.add_to_cart()
+            
+        finally:
+            driver.refresh()
+            time.sleep(random.randint(10,45))
+            print('It is not is Stock yet.')
+    
+    def add_to_cart(self):
+        """ Helper function to add product to cart."""
+
+        driver.find_element_by_xpath('//*[@id="add-to-cart-button"]').click()
+        #self.email_notification()
+        driver.quit()
 
 if __name__ == '__main__':
     """ This script is executed, when you run .py file. """
