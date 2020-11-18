@@ -15,3 +15,5 @@ class Email:
 	RECEIVER = 'email_of_receiver'
 	SUBJECT = 'subject of email'
 	BODY = 'body of email'
+
+	test
