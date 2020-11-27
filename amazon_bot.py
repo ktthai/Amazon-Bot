@@ -44,8 +44,8 @@ class Product:
         # time.sleep(10)
         
         """ Change this URL to add another product to cart. """
-        driver.get("https://www.amazon.com/gp/product/B0883PYCB7/ref=ox_sc_saved_title_1?smid=A1COA7PWTAABOP&psc=1/")
-        # driver.get("https://www.amazon.com/gp/product/B08L8JNTXQ?pf_rd_r=NBZW9ZN4KG585TZXS68E&pf_rd_p=edaba0ee-c2fe-4124-9f5d-b31d6b1bfbee")
+        # driver.get("https://www.amazon.com/gp/product/B0883PYCB7/ref=ox_sc_saved_title_1?smid=A1COA7PWTAABOP&psc=1/")
+        driver.get("https://www.amazon.com/PlayStation-5-Console/dp/B08FC5L3RG/ref=sr_1_1?dchild=1&keywords=ps5&qid=1606457183&rnid=2941120011&s=videogames&sr=1-1")
 
     def check_availability(self):
         """ This function checks product availability
@@ -53,8 +53,8 @@ class Product:
         
         try:
         	driver.find_element_by_xpath\
-            ('''//*[@id="priceblock_ourprice"]''')
-        
+            ('''//*[@id="priceblock_ourprice"]'''
+            
         except:
             try:
             	driver.find_element_by_xpath\
